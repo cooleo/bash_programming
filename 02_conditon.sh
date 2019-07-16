@@ -1,5 +1,16 @@
 #!/bin/bash
 # GNU bash, version 4.3.46
+
+if ping google.com; then
+  echo "working well with internet"
+fi
+if ping -c 1 google.com; then
+ echo "Internet connection ok"
+fi
+ 
+
+
+
 if [$(whoami) != 'root']; then
    echo "Must be root to run"
 fi
