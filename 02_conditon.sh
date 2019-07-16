@@ -8,9 +8,6 @@ if ping -c 1 google.com; then
  echo "Internet connection ok"
 fi
  
-
-
-
 if [$(whoami) != 'root']; then
    echo "Must be root to run"
 fi
