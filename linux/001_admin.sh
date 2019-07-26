@@ -98,3 +98,12 @@ collation order to be imposed. Table 2.1 shows a few of the more common options,
 
 cut -d: -f7 /etc/passwd | sort | uniq -c
 
+
+wc: count lines, words, and characters
+Counting the number of lines, words, and characters in a file is another common
+operation, and the wc (word count) command is a convenient way of doing this.
+Run without options, it displays all three counts:
+
+wc /etc/passwd
+ 32 77 2003 /etc/passwd
+
