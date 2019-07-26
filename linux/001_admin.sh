@@ -68,3 +68,4 @@ cp --preserve --recursive /etc/* /spare/backup \
 #Variables and quoting
  etcdir='/etc'
  echo $etcdir 
+ echo "Saved ${rev}th version of mdadm.conf." 
