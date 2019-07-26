@@ -1,3 +1,6 @@
+#!/bin/bash
+# GNU bash, version 4.3.46
+
 #Check os version in Linux
 cat /etc/os-release
 lsb_release -a
