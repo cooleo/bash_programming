@@ -36,3 +36,35 @@ aix# cd /tmp; gunzip wget-1.11.4.tar.gz
 aix# tar xfp wget-1.11.4.tar
 aix# cd wget-1.11.4
 aix# ./configure --disable-ssl --disable-nls 
+
+# find -name = core
+#usually results in so many “permission denied” error messages that genuine hits
+#get lost in the clutter. To discard all the error messages, you can use
+find / -name core
+find / -name core 2> /dev/null
+#This command line sends matching paths to /tmp/corefiles, discards errors, and
+#sends nothing to the terminal window
+find / -name core > /tmp/corefiles 2> /dev/null #
+
+#The first example runs ps to generate a list of processes and pipes it through the
+#grep command to select lines that contain the word httpd. The output of grep is
+#not redirected, so the matching lines come to the terminal window
+
+ps -ef | grep httpd 
+
+#The cut command in the second example picks out the path to each user’s shell
+#from /etc/passwd. The list of shells is then sent through sort -u to produce a
+#sorted list of unique values.
+cut -d: -f7 < /etc/passwd | sort -u
+
+#To execute a second command only if its precursor completes successfully, you
+#can separate the commands with an && symbol. For example
+ lpr /tmp/t2 && rm /tmp/t2
+ 
+ #In a script, you can use a backslash to break a command onto multiple lines, helping to distinguish the error-handling code from the rest of the command pipeline:
+cp --preserve --recursive /etc/* /spare/backup \
+|| echo "Did NOT make backup"
+
+#Variables and quoting
+ etcdir='/etc'
+ echo $etcdir 
