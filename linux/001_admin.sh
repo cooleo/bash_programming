@@ -69,3 +69,32 @@ cp --preserve --recursive /etc/* /spare/backup \
  etcdir='/etc'
  echo $etcdir 
  echo "Saved ${rev}th version of mdadm.conf." 
+ 
+ #The commands below illustrate the difference between numeric and dictionary
+#sorting, which is the default. Both commands use the -t: and -k3,3 options to sort
+#the /etc/group file by its third colon-separated field, the group ID. The first sorts
+#numerically and the second alphabetically.
+sort -t: -k3,3 -n /etc/group
+
+uniq: print unique lines
+uniq is similar in spirit to sort -u, but it has some useful options that sort does not
+emulate: -c to count the number of instances of each line, -d to show only duplicated lines, and -u to show only nonduplicated lines. The input must be presorted,
+usually by being run through sort.
+For example, the command below shows that 20 users have /bin/bash as their
+login shell and that 12 have /bin/false. (The latter are either pseudo-users or users
+whose accounts have been disabled.)
+
+cut: separate lines into fields
+The cut command prints selected portions of its input lines. It’s most commonly
+used to extract delimited fields, as in the example on page 32, but it can return
+segments defined by column boundaries as well. The default delimiter is <Tab>,
+but you can change delimiters with the -d option. The -f options specifies which
+fields to include in the output.
+For an example of the use of cut, see the section on uniq, below.
+sort: sort lines
+sort sorts its input lines. Simple, right? Well, maybe not—there are a few potential
+subtleties regarding the exact parts of each line that are sorted (the “keys”) and the
+collation order to be imposed. Table 2.1 shows a few of the more common options, but check the man page for others.
+
+cut -d: -f7 /etc/passwd | sort | uniq -c
+
